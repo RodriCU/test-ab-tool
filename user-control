@@ -1,0 +1,100 @@
+<?php
+	
+    function testAB () {
+
+        // Verificar si la cookie existe y su valor no es 'variante' ni 'control'
+        if(!isset($_COOKIE['_s_exp']) || ($_COOKIE['_s_exp'] !== 'variante' && $_COOKIE['_s_exp'] !== 'control')) {
+            
+            $numero_aleatorio = rand(100000, 999999);
+            $fecha_hoy = date('Y-m-d');
+            $concatenado = $numero_aleatorio . '_' . $fecha_hoy;
+        
+            $srm_control;
+            $a = {{API GOOGLE CLOUD FOR SPREADSHEETS}}; 
+            $s = {{ID DE UN SPREADSHEETS}};
+            $range = 'I1';
+
+            $url = 'https://sheets.googleapis.com/v4/spreadsheets/' . $s . '/values/' . $range . '?key=' . $a;
+            $data = file_get_contents($url);
+            $response = json_decode($data, true);
+
+            if ($response !== null && isset($response['values'][0])) {
+                $srm_control = $response['values'][0][0];
+            
+                function generarNumeroAleatorio() {
+                    $math = rand(0, 99);
+                    return $math;
+                }
+                $valorExterno = generarNumeroAleatorio();
+                if ($valorExterno >= 0 && $valorExterno <= 49) {
+                    $randomAlternative = 'control';
+                } else {
+                    $randomAlternative = 'variante';
+                }
+
+
+          if (!isset($_COOKIE['_s_exp'])) {
+                    if ($srm_control > 0) {
+                        $cookieNameV = "_s_exp";
+                        $cookieValueV = "variante";
+                        $expirationTimeV = 90 * 24 * 60 * 60;
+                        $dateV = gmdate('D, d-M-Y H:i:s T', time() + $expirationTimeV);
+                        setcookie($cookieNameV, $cookieValueV, time() + $expirationTimeV, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+                        $cookieNameIdV = "_s_exp_id";
+                        $cookieValueIdV = $concatenado;
+                        $expirationTimeIdV = 90 * 24 * 60 * 60;
+                        $dateIdV = gmdate('D, d-M-Y H:i:s T', time() + $expirationTimeIdV);
+                        setcookie($cookieNameIdV, $cookieValueIdV, time() + $expirationTimeIdV, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+						$html_meta = '<meta name="data-exp" content="' . htmlspecialchars($cookieValueV) . '">';
+						echo $html_meta;
+						$html_meta_n = '<meta name="data-exp-id" content="' . htmlspecialchars($concatenado) . '">';
+						echo $html_meta_n;
+                      
+                    } else if ($srm_control <= 0) {
+                        $cookieNameC = "_s_exp";
+                        $cookieValueC = "control";
+                        $expirationTimeC = 90 * 24 * 60 * 60;
+                        $dateC = gmdate('D, d-M-Y H:i:s T', time() + $expirationTimeC);
+                        setcookie($cookieNameC, $cookieValueC, time() + $expirationTimeC, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+                        $cookieNameIdC = "_s_exp_id";
+                        $cookieValueIdC = $concatenado;
+                        $expirationTimeIdC = 90 * 24 * 60 * 60;
+                        $dateIdC = gmdate('D, d-M-Y H:i:s T', time() + $expirationTimeIdC);
+                        setcookie($cookieNameIdC, $cookieValueIdC, time() + $expirationTimeIdC, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+						$html_meta = '<meta name="data-exp" content="' . htmlspecialchars($cookieValueC) . '">';
+						echo $html_meta;
+						$html_meta_n = '<meta name="data-exp-id" content="' . htmlspecialchars($concatenado) . '">';
+						echo $html_meta_n;
+                  } else {
+                        $cookieName = "_s_exp";
+                        $cookieValue = $randomAlternative;
+                        $expirationTime = 90 * 24 * 60 * 60;
+                        $dateC = gmdate('D, d-M-Y H:i:s T', time() + $expirationTime);
+                        setcookie($cookieName, $cookieValue, time() + $expirationTime, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+                        $cookieNameId = "_s_exp_id";
+                        $cookieValueId = $concatenado;
+                        $expirationTimeId = 90 * 24 * 60 * 60;
+                        $dateId = gmdate('D, d-M-Y H:i:s T', time() + $expirationTimeId);
+                        setcookie($cookieNameId, $cookieValueId, time() + $expirationTimeId, '/', '.' . preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST']), false, false);
+						$html_meta = '<meta name="data-exp" content="' . htmlspecialchars($cookieValue) . '">';
+						echo $html_meta;
+						$html_meta_n = '<meta name="data-exp-id" content="' . htmlspecialchars($concatenado) . '">';
+						echo $html_meta_n;   
+                    }
+                }
+            } else {
+
+            }
+        } else {
+            
+                $cookieValueS = $_COOKIE['_s_exp'];
+                $html_meta_s = '<meta name="data-exp" content="' . htmlspecialchars($cookieValueS) . '">';
+				echo $html_meta_s;
+				
+				$cookieValueId = $_COOKIE['_s_exp_id'];
+                $html_meta_id = '<meta name="data-exp-id" content="' . htmlspecialchars($cookieValueId) . '">';
+				echo $html_meta_id;
+        }
+}
+	testAB();
+?>
