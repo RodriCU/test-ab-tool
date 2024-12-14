@@ -1,0 +1,188 @@
+
+var expName = 'change cta above the fold';
+var expType = 'ab test';
+var urlTarget = 'https://example.com/';
+
+
+var target = document.location.href;
+
+
+function test() {
+
+    var cookieValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("_gtm_exp="))
+        ?.split("=")[1];
+    
+    console.log("primer"+cookieValue);
+
+    if (cookieValue === 'variante') {
+
+        if (target === urlTarget) {
+
+                    var enlacePirata = document.querySelector('a[href="/#pirata-informatico"]');
+                    var boton = document.createElement('button');
+                    boton.textContent = 'VER MÁS INFORMACIÓN'; 
+                    boton.style.backgroundColor = 'white';
+                    boton.style.color = 'black';
+                    boton.style.border = '1px solid black'; 
+                    boton.style.padding = '10px'; 
+                    boton.style.borderRadius = '5px'; 
+                    boton.style.cursor = 'pointer'; 
+                    var enlace = document.createElement('a');
+                    enlace.href = 'https://example.com/#pirata-informatico';
+                    enlace.style.textDecoration = 'none';
+                    enlace.appendChild(boton);
+    
+                    enlacePirata.replaceWith(enlace);
+                    
+                    window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'exp_impression',
+                            'experiment_name': expName,
+                            'experiment_variant': 'variante',
+                            'experiment_type': expType
+                    });
+                } 
+        } else if (cookieValue === 'control'){
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'exp_impression',
+                'experiment_name': expName,
+                'experiment_variant': 'control',
+                'experiment_type': expType
+            });
+
+        }
+};
+
+//not edit
+function checkCookie() {
+
+    var cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("_gtm_exp="))
+      ?.split("=")[1];
+    
+    console.log("segundo"+cookieValue);
+
+    return cookieValue;
+}
+
+cookieValue = checkCookie()
+
+
+//not edit
+if ((cookieValue !== 'variante')&&(cookieValue !== 'control')) {
+
+    var srm_control;
+    var a = {{Tu API de sheet de GoogleCloud}};
+    var s = {{Tu id de Google Sheet}};
+    var range = 'I1';
+    
+    var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + s + '/values/' + range + '?key=' + a;
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) { // XMLHttpRequest.DONE
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+    
+                if (data.values && data.values[0]) {
+                    srm_control = data.values[0][0];
+                    console.log(srm_control);
+                        var valorExterno;
+    
+                        function generarNumeroAleatorio() {
+                            var math = Math.floor(Math.random() * 100);
+                            valorExterno = math;
+                            return math;
+                        }
+                        generarNumeroAleatorio(valorExterno)
+
+                        if (valorExterno >= 0 && valorExterno <= 49) {
+                            randomAlternative = 'control';
+                        } else {
+                            randomAlternative = 'variante';
+                        }
+    
+                        if ((document.cookie.match(/^(?:.*;)?\s*_gtm_exp\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1] === null) {
+    
+                            if (srm_control > 0) {
+    
+                                var cookieNameV = "_gtm_exp";
+                                var cookieValueV = "variante";
+                                var expirationTimeV = 5184000;
+                                expirationTimeV = expirationTimeV * 1000;
+                                var dateV = new Date();
+                                var dateTimeNowV = dateV.getTime();
+                                dateV.setTime(dateTimeNowV + expirationTimeV);
+                                var dateV = dateV.toUTCString(); 
+                                document.cookie = cookieNameV+"="+cookieValueV+"; SameSite=None; Secure; expires="+dateV+"; path=/; domain=." + location.hostname.replace(/^www\./i, "");
+                                test()
+    
+                            } else if (srm_control < 0) {
+    
+                                var cookieNameC = "_gtm_exp"; 
+                                var cookieValueC = "control";
+                                var expirationTimeC = 5184000; 
+                                expirationTimeC = expirationTimeC * 1000;
+                                var dateC = new Date();
+                                var dateTimeNowC = dateC.getTime();
+                                dateC.setTime(dateTimeNowC + expirationTimeC); 
+                                var dateC = dateC.toUTCString(); 
+                                document.cookie = cookieNameC+"="+cookieValueC+"; SameSite=None; Secure; expires="+dateC+"; path=/; domain=." + location.hostname.replace(/^www\./i, "");
+                                test()
+                            } else {
+    
+                                var cookieName = "_gtm_exp"; 
+                                var cookieValue = randomAlternative; 
+                                var expirationTime = 5184000; 
+                                expirationTime = expirationTime * 1000; 
+                                var date = new Date();
+                                var dateTimeNow = date.getTime();
+    
+                                date.setTime(dateTimeNow + expirationTime); 
+                                var date = date.toUTCString(); 
+                                document.cookie = cookieName+"="+cookieValue+"; SameSite=None; Secure; expires="+date+"; path=/; domain=." + location.hostname.replace(/^www\./i, ""); // inserción de la cookie en cualquier subdominio del proyecto
+                                test()
+                             }
+                            }
+                    
+                } else {
+                    console.error('La respuesta no contiene los valores esperados.');
+                }
+            } else {
+                console.error('Error al acceder a la hoja de cálculo:', xhr.responseText);
+            }
+        }
+    };
+    
+    xhr.open('GET', url, true);
+    xhr.send(); 
+
+
+} 
+
+//not edit
+cookieValue = checkCookie()
+
+if (cookieValue === 'variante') {
+     console.log("funcion test 1"+cookieValue);
+ document.addEventListener('DOMContentLoaded', function() {
+     console.log("funcion test 2"+cookieValue);
+     test()
+ });    
+
+} else if (cookieValue === 'control'){
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'exp_impression',
+                'experiment_name': expName,
+                'experiment_variant': 'control',
+                'experiment_type': expType
+            });
+
+        }
