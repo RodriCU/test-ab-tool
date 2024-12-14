@@ -1,0 +1,25 @@
+<!DOCTYPE HTML> 
+<html> 
+ <head> 
+   <style>
+        body {
+            visibility: hidden; //ocultamos el contenido durante las milésimas de segundo necesarias para que se ejecuten los cambios
+        }
+   </style>
+   <script src="/abt.js"></script>
+   ... 
+ </head> 
+ <body>
+  ...
+  
+  <footer>
+  ...
+  </footer>
+   <script>    
+     var flicker = document.getElementsByTagName("body")[0];
+     setTimeout(function() {
+        flicker.style.visibility = 'visible'; //una vez ejecutados los cambios mostramos el diseño
+       }, 800);
+   </script>
+ </body>
+</html> 
