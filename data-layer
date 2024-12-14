@@ -1,0 +1,18 @@
+// Ejemplo de capa de datos en el caso de que la versión visualizada sea la variante
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+     'event': 'exp_impression',
+     'experiment_name': expName, //nombre del experimento
+     'experiment_variant': 'variante',
+     'experiment_type': expType //tipo de experimento
+});
+
+Ejemplo de capa de datos en el caso de que la versión visualizada sea la original
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+     'event': 'exp_impression',
+     'experiment_name': expName, //nombre del experimento
+     'experiment_variant': 'control',
+     'experiment_type': expType //tipo de experimento
+});
+
