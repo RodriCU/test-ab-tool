@@ -1,0 +1,134 @@
+//Tipo de dispositivo
+function detectarTipoDispositivo() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Dispositivos móviles
+    if (/android/i.test(userAgent)) {
+        return "mobile";
+    }
+    // Dispositivos iOS
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "mobile";
+    }
+    // Tablets
+    var esTablet = /iPad|Tablet|PlayBook|Nexus 7|Nexus 10|KFAPWI/.test(userAgent);
+    if (esTablet) {
+        return "tablet";
+    }
+    // Escritorio
+    return "desktop";
+}
+var tipoDispositivo = detectarTipoDispositivo();
+
+
+//Tipo de referente
+function getReferrer() {
+    // Obtener el referente
+    var referrer = document.referrer;
+    // Si no hay referente, se puede establecer un valor predeterminado o dejarlo vacío
+    if (!referrer) {
+        referrer = "direct";
+    }
+    return referrer;
+}
+
+
+//Tipo de UTM
+function getUTMParameter(param) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || 'sin-definir';
+}
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+// Obtener los valores UTM o 'sin-definir' si no están presentes
+var utmSource = getUTMParameter('utm_source');
+var utmMedium = getUTMParameter('utm_medium');
+var utmCampaign = getUTMParameter('utm_campaign');
+// Crear la variable _exp_utm
+var _exp_utm = utmSource + "_" + utmMedium + "_" + utmCampaign;
+// Insertar la cookie en el navegador del usuario
+setCookie("_exp_utm", _exp_utm, 90); // La cookie expira en 90 días
+
+
+//Tipo detalayer en primera anidación del objeto
+function obtenerValorDeDataLayer(dimension) {
+    // Asegurarse de que dataLayer está definido
+    if (typeof dataLayer === 'undefined') {
+        console.warn('dataLayer no está definido.');
+        return null;
+    }
+    // Recorrer cada objeto en dataLayer
+    for (var i = 0; i < dataLayer.length; i++) {
+        var item = dataLayer[i];
+        // Verificar si el objeto tiene la propiedad 'dimension'
+        if (item.hasOwnProperty(dimension)) {
+            return item[dimension];
+        }
+    }
+    // Retornar null si no se encuentra la 'dimension'
+    console.warn('Dimension "' + dimension + '" no encontrada en dataLayer.');
+    return null;
+}
+// Ejemplo de uso
+var valor = obtenerValorDeDataLayer('miDimension');
+
+
+//Tipo detalayer en segunda anidación del objeto como podría ser las dimensiones de ecommerce
+function obtenerValorDeItemsEnDataLayer(dimension) {
+    // Asegurarse de que dataLayer está definido
+    if (typeof dataLayer === 'undefined') {
+        console.warn('dataLayer no está definido.');
+        return null;
+    }
+    // Recorrer cada objeto en dataLayer
+    for (var i = 0; i < dataLayer.length; i++) {
+        var item = dataLayer[i];
+        // Verificar si el objeto tiene la propiedad 'ecommerce'
+        if (item.hasOwnProperty('ecommerce')) {
+            var ecommerce = item.ecommerce;
+            // Verificar si ecommerce tiene la propiedad 'items'
+            if (ecommerce.hasOwnProperty('items')) {
+                var items = ecommerce.items;
+                // Recorrer cada objeto en items
+                for (var j = 0; j < items.length; j++) {
+                    var item = items[j];
+                    // Verificar si el objeto item tiene la PROPERTY
+                    if (item.hasOwnProperty(dimension)) {
+                        return item[dimension];
+                    }
+                }
+            }
+        }
+    }
+    // Retornar null si no se encuentra la 'dimension'
+    console.warn('Dimension "' + dimension + '" no encontrada en items de ecommerce de dataLayer.');
+    return null;
+}
+// Ejemplo de uso
+var valor = obtenerValorDeItemsEnDataLayer('price');
+
+
+//Tipo de cookie
+function obtenerValorDeCookie(nombreCookie) {
+    var cookies = document.cookie.split(';');
+    for(var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var partes = cookie.split('=');
+        // Eliminar espacios en blanco al inicio del nombre de la cookie
+        var nombre = partes[0].trim();
+        if (nombre === nombreCookie) {
+            // Decodificar el valor de la cookie y devolverlo
+            return decodeURIComponent(partes.slice(1).join('='));
+        }
+    }
+    // Retornar null si no se encuentra la cookie
+    return null;
+}
+// Ejemplo de uso
+var valorCookie = obtenerValorDeCookie('miCookie');
