@@ -3,7 +3,7 @@
  <head> 
    <style>
         body {
-            visibility: hidden; //ocultamos el contenido durante las milésimas de segundo necesarias para que se ejecuten los cambios
+            visibility: hidden; //we hide the content for the milliseconds necessary for the changes to be executed
         }
    </style>
    <script src="/abt.js"></script>
