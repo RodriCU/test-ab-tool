@@ -2,7 +2,7 @@
 	
     function testAB () {
 
-        // Verificar si la cookie existe y su valor no es 'variante' ni 'control'
+        // Check if the cookie exists and its value is neither 'variant' nor 'control'.
         if(!isset($_COOKIE['_s_exp']) || ($_COOKIE['_s_exp'] !== 'variante' && $_COOKIE['_s_exp'] !== 'control')) {
             
             $numero_aleatorio = rand(100000, 999999);
@@ -11,7 +11,7 @@
         
             $srm_control;
             $a = {{API GOOGLE CLOUD FOR SPREADSHEETS}}; 
-            $s = {{ID DE UN SPREADSHEETS}};
+            $s = {{SPREADSHEET ID}};
             $range = 'I1';
 
             $url = 'https://sheets.googleapis.com/v4/spreadsheets/' . $s . '/values/' . $range . '?key=' . $a;
