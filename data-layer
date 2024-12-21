@@ -1,4 +1,4 @@
-// Ejemplo de capa de datos en el caso de que la versión visualizada sea la variante
+//  Example of a data layer in case the displayed version is the variant
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
      'event': 'exp_impression',
@@ -7,7 +7,7 @@ window.dataLayer.push({
      'experiment_type': expType //tipo de experimento
 });
 
-Ejemplo de capa de datos en el caso de que la versión visualizada sea la original
+Example of a data layer in case the displayed version is the original one.
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
      'event': 'exp_impression',
