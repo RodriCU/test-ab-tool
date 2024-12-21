@@ -6,7 +6,7 @@
             visibility: hidden;
         }
    </style>
-   <script src="/abtestfile.js"></script> //ubicamos el script justo en esta ubicación
+   <script src="/abtestfile.js"></script> //we place the script right in this location
    ... 
  </head> 
  <body>
