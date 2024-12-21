@@ -2,7 +2,7 @@
 // 1. Enter sheet name where data is to be written below
 // 1. Enter sheet name and key where data is to be written below
 var SHEET_NAME = "Sheet1";
-var SHEET_KEY = {{YOUR-KEY}}; //Key creada como muestra Julian Juenemann en https://youtu.be/in92sz0rvHw?feature=shared
+var SHEET_KEY = {{YOUR-KEY}}; //Key created as shown by Julian Juenemann in https://youtu.be/in92sz0rvHw?feature=shared
 
 // 2. Run &gt; setup
 //
