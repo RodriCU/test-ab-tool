@@ -4,24 +4,24 @@ function eliminarFilasDuplicadas() {
   var valores = rango.getValues();
   var filasParaEliminar = [];
 
-  // Crear un objeto para almacenar combinaciones únicas
+  // Create an object to store unique combinations
   var combinacionesUnicas = {};
 
-  // Recorrer las filas (ignorando el encabezado)
+  // Scroll through the rows (ignoring the header)
   for (var i = 1; i < valores.length; i++) {
     var fila = valores[i];
-    // Crear una clave única combinando los valores de las columnas B, C, D, E
+    // Create a unique key by combining the values of columns B, C, D, E.
     var clave = fila[1] + "-" + fila[2] + "-" + fila[3] + "-" + fila[4]; // Columnas B, C, D, E
 
-    // Si la clave ya existe, marcar la fila para eliminar
+    // If the key already exists, mark the row to delete.
     if (combinacionesUnicas[clave]) {
-      filasParaEliminar.push(i + 1); // +1 porque los índices de fila en Apps Script comienzan en 1
+      filasParaEliminar.push(i + 1); // +1 because row indexes in Apps Script start at 1
     } else {
-      combinacionesUnicas[clave] = true; // Almacenar la clave
+      combinacionesUnicas[clave] = true; // Store the key
     }
   }
 
-  // Eliminar filas duplicadas, empezando por la última para no alterar los índices
+  // Delete duplicate rows, starting with the last one so as not to alter the indexes.
   for (var j = filasParaEliminar.length - 1; j >= 0; j--) {
     hoja.deleteRow(filasParaEliminar[j]);
   }
