@@ -1,4 +1,4 @@
-//Tipo de dispositivo
+//Device type
 function detectarTipoDispositivo() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
     // Dispositivos móviles
@@ -20,7 +20,7 @@ function detectarTipoDispositivo() {
 var tipoDispositivo = detectarTipoDispositivo();
 
 
-//Tipo de referente
+//Type of referent
 function getReferrer() {
     // Obtener el referente
     var referrer = document.referrer;
@@ -32,7 +32,7 @@ function getReferrer() {
 }
 
 
-//Tipo de UTM
+//UTMs
 function getUTMParameter(param) {
     var urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param) || 'sin-definir';
@@ -46,59 +46,59 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
-// Obtener los valores UTM o 'sin-definir' si no están presentes
+// Get UTM or 'undefined' values if not present
 var utmSource = getUTMParameter('utm_source');
 var utmMedium = getUTMParameter('utm_medium');
 var utmCampaign = getUTMParameter('utm_campaign');
-// Crear la variable _exp_utm
+// Create the _exp_utm variable
 var _exp_utm = utmSource + "_" + utmMedium + "_" + utmCampaign;
-// Insertar la cookie en el navegador del usuario
+// Insert the cookie in the user's browser
 setCookie("_exp_utm", _exp_utm, 90); // La cookie expira en 90 días
 
 
-//Tipo detalayer en primera anidación del objeto
+//Type detalayer in first nesting of the object
 function obtenerValorDeDataLayer(dimension) {
-    // Asegurarse de que dataLayer está definido
+    // Ensure that dataLayer is defined
     if (typeof dataLayer === 'undefined') {
         console.warn('dataLayer no está definido.');
         return null;
     }
-    // Recorrer cada objeto en dataLayer
+    // Traverse each object in dataLayer
     for (var i = 0; i < dataLayer.length; i++) {
         var item = dataLayer[i];
-        // Verificar si el objeto tiene la propiedad 'dimension'
+        // Check if the object has the property 'dimension'.
         if (item.hasOwnProperty(dimension)) {
             return item[dimension];
         }
     }
-    // Retornar null si no se encuentra la 'dimension'
+    // Return null if 'dimension' not found
     console.warn('Dimension "' + dimension + '" no encontrada en dataLayer.');
     return null;
 }
-// Ejemplo de uso
+// Example of use
 var valor = obtenerValorDeDataLayer('miDimension');
 
 
-//Tipo detalayer en segunda anidación del objeto como podría ser las dimensiones de ecommerce
+//Type detalayer in second nesting of the object such as ecommerce dimensions.
 function obtenerValorDeItemsEnDataLayer(dimension) {
-    // Asegurarse de que dataLayer está definido
+    // Ensure that dataLayer is defined
     if (typeof dataLayer === 'undefined') {
         console.warn('dataLayer no está definido.');
         return null;
     }
-    // Recorrer cada objeto en dataLayer
+    // Traverse each object in dataLayer
     for (var i = 0; i < dataLayer.length; i++) {
         var item = dataLayer[i];
-        // Verificar si el objeto tiene la propiedad 'ecommerce'
+        // Check if the object has the property 'ecommerce'.
         if (item.hasOwnProperty('ecommerce')) {
             var ecommerce = item.ecommerce;
-            // Verificar si ecommerce tiene la propiedad 'items'
+            // Check if ecommerce has the property 'items'.
             if (ecommerce.hasOwnProperty('items')) {
                 var items = ecommerce.items;
-                // Recorrer cada objeto en items
+                // Scroll through each object in items
                 for (var j = 0; j < items.length; j++) {
                     var item = items[j];
-                    // Verificar si el objeto item tiene la PROPERTY
+                    // Check whether the item object has PROPERTY
                     if (item.hasOwnProperty(dimension)) {
                         return item[dimension];
                     }
@@ -106,29 +106,29 @@ function obtenerValorDeItemsEnDataLayer(dimension) {
             }
         }
     }
-    // Retornar null si no se encuentra la 'dimension'
+    // Return null if 'dimension' not found
     console.warn('Dimension "' + dimension + '" no encontrada en items de ecommerce de dataLayer.');
     return null;
 }
-// Ejemplo de uso
+// Example of use
 var valor = obtenerValorDeItemsEnDataLayer('price');
 
 
-//Tipo de cookie
+//Type of cookie
 function obtenerValorDeCookie(nombreCookie) {
     var cookies = document.cookie.split(';');
     for(var i = 0; i < cookies.length; i++) {
         var cookie = cookies[i];
         var partes = cookie.split('=');
-        // Eliminar espacios en blanco al inicio del nombre de la cookie
+        // Removing blanks at the beginning of the cookie name
         var nombre = partes[0].trim();
         if (nombre === nombreCookie) {
-            // Decodificar el valor de la cookie y devolverlo
+            // Decode and return the cookie value
             return decodeURIComponent(partes.slice(1).join('='));
         }
     }
-    // Retornar null si no se encuentra la cookie
+    // Return null if cookie not found
     return null;
 }
-// Ejemplo de uso
+// Example of use
 var valorCookie = obtenerValorDeCookie('miCookie');
