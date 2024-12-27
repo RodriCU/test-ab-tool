@@ -128,7 +128,7 @@ And what about the visual editor? There is none of that, we make the changes in 
 <h3>Measurement via data layer and external tools</h3>
 And how do we measure the results? The idea I had was with our beloved and hated GA4 via data layer (<a target="_blank" href="https://github.com/RodriCU/test-ab-tool/blob/main/data-layer">code example</a>).
 
-In advanced projects, by sending to GA4 we will be able to base all our analysis on BigQuery, although there are some aspects that we will have to take into account explained in this publication.
+In advanced projects, by sending to GA4 we will be able to base all our analysis on BigQuery, although there are some aspects that we will have to take into account <a target="_blank" href="https://www.linkedin.com/feed/update/urn:li:activity:7108407858869714944/?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7108407858869714944%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29">explained in this publication</a>.
 
 To this we add external tools such as:
 <ul>
