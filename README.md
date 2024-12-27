@@ -152,6 +152,10 @@ Here some drafts of possible ways to narrow the <a target="_blank" ahref="https:
 Others?,do you need more?
 
 
+Full article in Spanish with images here: 
+https://cro.school/test-ab-gratis/
+
+
 
 
 
