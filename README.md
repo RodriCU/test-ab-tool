@@ -21,16 +21,16 @@ Can you help me? 🙏</i>
 
 <strong>Index:</strong>
 <ol>
-  <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#what-is-the-challenge">What is the challenge?</a></li>
-  <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#step-by-step-implementation">Step by step impplementation</a></li>
+  <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#what-is-the-challenge">What is the challenge?</a></li>
+  <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#step-by-step-implementation">Step by step impplementation</a></li>
   <ol>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#google-sheet-api-from-google-cloud">Google Sheet API from Google Cloud</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#google-sheet-as-a-database">Google Sheet as a data base</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#avoiding-the-flicker-effect">Avoiding flicker effect</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#script-that-controls-the-logic-of-the-experiment">Script that controls the logic of the experiment</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#script-that-generates-a-new-alternative-version">Script that generates a new alternative version</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#measurement-via-data-layer-and-external-tools">Measurement via data layer and external tools</a></li>
-    <li><a href="https://github.com/RodriCU/test-ab-tool/new/main?filename=README.md#useful-scripts">Useful scripts</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#google-sheet-api-from-google-cloud">Google Sheet API from Google Cloud</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#google-sheet-as-a-database">Google Sheet as a data base</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#avoiding-the-flicker-effect">Avoiding flicker effect</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#script-that-controls-the-logic-of-the-experiment">Script that controls the logic of the experiment</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#script-that-generates-a-new-alternative-version">Script that generates a new alternative version</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#measurement-via-data-layer-and-external-tools">Measurement via data layer and external tools</a></li>
+    <li><a href="https://github.com/RodriCU/test-ab-tool?tab=readme-ov-file#useful-scripts">Useful scripts</a></li>
   </ol>  
 </ol>
 
