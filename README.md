@@ -38,15 +38,15 @@ Can you help me? 🙏</i>
 
 <h2>What is the challenge?</h2>
 <ul>
-  <li><strong>To have a free or low-cost solution to validate hypotheses with real traffic.</strong>strong> At the moment the tool is promising.
+  <li><strong>To have a free or low-cost solution to validate hypotheses with real traffic.</strong> At the moment the tool is promising.
 </li>
-  <li><strong>That we can trust the results.</strong>strong> In different tests I have performed on a website with real traffic, I have not detected any problems with the data.
+  <li><strong>That we can trust the results.</strong> In different tests I have performed on a website with real traffic, I have not detected any problems with the data.
 </li>
-  <li><strong>That the implementation is as agile as possible.</strong>strong> Today, in my opinion, this is the big problem.
+  <li><strong>That the implementation is as agile as possible.</strong> Today, in my opinion, this is the big problem.
 </li>
-  <li><strong>The launching of the experiments should be as agile as possible.</strong>strong> Relative difficulty, if we are given access via FTP to a JS file that will be responsible for making the layout changes well, but we can find barriers in certain companies.
+  <li><strong>The launching of the experiments should be as agile as possible.</strong> Relative difficulty, if we are given access via FTP to a JS file that will be responsible for making the layout changes well, but we can find barriers in certain companies.
 </li>
-  <li><strong>Open source.</strong>strong> That anyone can make it work.
+  <li><strong>Open source.</strong> That anyone can make it work.
 </li>
 </ul>
 
